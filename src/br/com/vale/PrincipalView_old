@@ -1,0 +1,69 @@
+package br.com.vale;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+public class PrincipalView extends JFrame {
+	public PrincipalView() {
+		setTitle("Sistema de Controle de Adiantamentos");
+		setSize(600, 400);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
+
+		// Definir ícone da aplicação
+		// setIconImage(new
+		// ImageIcon(getClass().getResource("/br/com/vale/assets/icon2.png")).getImage());
+
+		// Criando menu principal
+		JMenuBar menuBar = new JMenuBar();
+
+		JMenu menuCadastro = new JMenu("Cadastro");
+		JMenu menuMovimento = new JMenu("Movimento");
+		JMenu menuRelatorios = new JMenu("Relatórios");
+		JMenu menuConfig = new JMenu("Configuração");
+
+		menuBar.add(menuCadastro);
+		menuBar.add(menuMovimento);
+		menuBar.add(menuRelatorios);
+		menuBar.add(menuConfig);
+
+		setJMenuBar(menuBar);
+
+		// Criar botão "Sair"
+		JButton btnSair = new JButton("Sair");
+		btnSair.setFont(new Font("Arial", Font.BOLD, 14));
+		btnSair.setBackground(Color.RED);
+		btnSair.setForeground(Color.WHITE);
+		btnSair.setPreferredSize(new Dimension(100, 40));
+
+		btnSair.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente sair?", "Confirmação",
+						JOptionPane.YES_NO_OPTION);
+				if (resposta == JOptionPane.YES_OPTION) {
+					System.exit(0);
+				}
+			}
+		});
+
+		// Criar painel e adicionar botão "Sair"
+		JPanel panel = new JPanel();
+		panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		panel.add(btnSair);
+
+		add(panel, BorderLayout.SOUTH);
+	}
+}

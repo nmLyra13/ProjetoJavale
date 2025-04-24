@@ -1,7 +1,0 @@
-# Eclipse / Java
-.classpath
-.project
-.settings/
-bin/
-target/
-*.class
